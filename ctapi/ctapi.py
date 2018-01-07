@@ -30,7 +30,6 @@ logger = logging.getLogger(__name__)
 requests.packages.urllib3.disable_warnings()
 
 URI_API = 'https://cointracking.info/api/v1/'
-# URI_API = 'http://127.0.0.1:8080/'
 
 
 class CTAPI(object):
@@ -80,20 +79,18 @@ class CTAPI(object):
 
         params.update({
             'method': method,
-            'nonce': 1515332961, #int(time.time() * 10),
+            'nonce': '%d' % int(time.time() * 10),
+            # 'nonce': 1515332961,
         })
 
         params_string = self._encode_params_url(params)
-        # params_signed = hmac.new(self.api_secret.encode(), msg='limit=1&method=getTrades&nonce=1515332961', digestmod=hashlib.sha512).hexdigest()
-        # params_signed = hmac.new(self.api_secret.encode(), msg=params_string.encode(), digestmod=hashlib.sha512).hexdigest()
-        params_signed = hmac.new(self.api_secret.encode(), msg='limit=1&method=getTrades&nonce=1515332961', digestmod=hashlib.sha512).hexdigest()
+        params_signed = hmac.new(self.api_secret.encode(), msg=params_string.encode(), digestmod=hashlib.sha512).hexdigest()
 
         hdrs = {
             'Key': self.api_key,
             'Sign': params_signed,
             'Connection': 'close',
-            # 'Content-Type': 'text/text'
-            # 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36',
+            'User-Agent': 'python-cointracking-api/%s (https://github.com/tbl42/python-cointracking-api)' % (__version__),
         }
 
         logger.debug("="*30)
@@ -101,13 +98,14 @@ class CTAPI(object):
         logger.debug(params_string)
         logger.debug(params_signed)
         logger.debug(hdrs)
-        logger.debug(self.api_key)
-        logger.debug(self.api_secret)
         logger.debug("="*30)
 
         try:
-            # r = requests.post(URI_API, headers=hdrs, data=params_string, verify=False)
-            r = requests.post(URI_API, headers=hdrs, data='limit=1&method=getTrades&nonce=1515332962', verify=False)
+            new_params = {}
+            for k in params.keys():
+                new_params[k] = (None, str(params[k]))
+
+            r = requests.post(URI_API, headers=hdrs, files=new_params, verify=False)
             ret_json = r.json()
 
             return {
@@ -121,55 +119,17 @@ class CTAPI(object):
             }
 
     ###########################################################################
-    # ORDERS
+    # API methods
     ###########################################################################
 
     #
-    # showOrderbook
+    # get all Trades
     #
     def getTrades(self, **args):
         """ TODO """
         params = {
-            'limit': 1,
-            # 'limit': 'all',
-            # 'order': 'ASC',
-            # 'start': 1200000000,
-            # 'end': 1450000000,
+            'limit': 10,
+            'order': 'DESC',
         }
         params.update(args)
         return self._api_query('getTrades', params)
-
-# async function coinTracking(method, params) {
-#     params.method = method;
-#     params.nonce = moment().unix();
-#
-#     var post_data = http_build_query(params, {leave_brackets: false});
-#
-#     var hash = crypto.createHmac('sha512', secret);
-#     hash.update(post_data);
-#     var sign = hash.digest('hex');
-#
-#     var headers =  { 'Key': key, 'Sign': sign};
-#
-#     var form = new FormData();
-#     for(var paramKey in params) {
-#         var value = params[paramKey];
-#         form.append(paramKey, value);
-#     }
-#
-#     var result = await fetch(url, {
-#         method: 'POST',
-#         body:   form,
-#         headers: headers,
-#     });
-#     var json = await result.json();
-#     return json;
-# }
-#
-# async function getTrades() {
-#     var params={};
-#     params.limit=200;
-#
-#     var res = await coinTracking('getTrades', params);
-#     console.log(res);
-# }
