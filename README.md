@@ -1,4 +1,4 @@
-# python-cointracking-api
+# python-ctapi
 
 Python Interface for [CoinTracking.info API](https://cointracking.info/api/api.php)
 
@@ -14,7 +14,7 @@ python setup.py install
 
 # How to Use
 
-This is an example how you can use the library:
+This is an example about how you can use the library
 ```
 #!/usr/bin/env python2
 
@@ -39,5 +39,4 @@ print api.getHistoricalSummary()
 print api.getHistoricalCurrency()
 print api.getGroupedBalance()
 print api.getGains()
-
 ```
