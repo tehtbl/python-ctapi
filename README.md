@@ -33,4 +33,11 @@ if trades['success']:
 
 else:
     print "got no orders"
+    
+print api.getBalance()
+print api.getHistoricalSummary()
+print api.getHistoricalCurrency()
+print api.getGroupedBalance()
+print api.getGains()
+
 ```
