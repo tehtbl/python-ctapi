@@ -3,7 +3,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='python-cointracking-api',
+    name='python-ctapi',
     version='0.1.0-dev',
     packages=find_packages('ctapi'),
     install_requires=[
@@ -14,7 +14,7 @@ setup(
 
     author='tbl42',
     author_email='cyberworker@posteo.de',
-    url='https://github.com/tbl42/python-cointracking-api',
+    url='https://github.com/tbl42/python-ctapi',
     description='Python Interface for CoinTracking.info API',
     long_description=open('README.md').read(),
     keywords = 'cointracking info btc api',

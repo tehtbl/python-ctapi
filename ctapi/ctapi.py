@@ -123,13 +123,64 @@ class CTAPI(object):
     ###########################################################################
 
     #
-    # get all Trades
+    # getTrades
     #
     def getTrades(self, **args):
-        """ TODO """
+        """ TODO: desc """
         params = {
-            'limit': 10,
+            'limit': 5,
             'order': 'DESC',
         }
         params.update(args)
         return self._api_query('getTrades', params)
+
+    #
+    # getBalance
+    #
+    def getBalance(self):
+        """ TODO: desc """
+        return self._api_query('getBalance')
+
+    #
+    # getHistoricalSummary
+    #
+    def getHistoricalSummary(self, **args):
+        """ TODO: desc """
+        params = {
+            'btc': 0,
+        }
+        params.update(args)
+        return self._api_query('getHistoricalSummary', params)
+
+    #
+    # getHistoricalCurrency
+    #
+    def getHistoricalCurrency(self, **args):
+        """ TODO: desc """
+        params = {
+            'currency': 'ETH',
+        }
+        params.update(args)
+        return self._api_query('getHistoricalCurrency', params)
+
+    #
+    # getGroupedBalance
+    #
+    def getGroupedBalance(self, **args):
+        """ TODO: desc """
+        params = {
+            'group': 'exchange',
+        }
+        params.update(args)
+        return self._api_query('getGroupedBalance', params)
+
+    #
+    # getGains
+    #
+    def getGains(self, **args):
+        """ TODO: desc """
+        params = {
+            'method': 'FIFO',
+        }
+        params.update(args)
+        return self._api_query('getGains', params)
