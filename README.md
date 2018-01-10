@@ -40,3 +40,12 @@ print api.getHistoricalCurrency()
 print api.getGroupedBalance()
 print api.getGains()
 ```
+
+# Contribute
+Do you have an idea or found a bug in python-ctapi? Please file an issue and make a PR! :)
+
+## Support
+If you like the API and wanna support its developer, use the following referral link when registering at cointracking: https://cointracking.info?ref=T161519
+
+
+
