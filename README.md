@@ -1,6 +1,8 @@
 # python-ctapi
 
-Python Interface for [CoinTracking.info API](https://cointracking.info/api/api.php)
+Python interface for [CoinTracking.info API](https://cointracking.info/api/api.php).
+
+I am not associated -- use at your own risk!
 
 # Requirements:
 
@@ -41,10 +43,15 @@ print api.getGroupedBalance()
 print api.getGains()
 ```
 
+# Running Tests
+```
+venv/bin/python -m unittest -v ctapi.test.ctapi_tests
+```
+
 # Contribute
 Do you have an idea or found a bug in python-ctapi? Please file an issue and make a PR! :)
 
-## Support
+## Support Me
 If you like the API and wanna support its developer, use the following referral link when registering at cointracking: https://cointracking.info?ref=T161519
 
 
