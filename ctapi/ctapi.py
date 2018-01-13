@@ -80,7 +80,6 @@ class CTAPI(object):
         params.update({
             'method': method,
             'nonce': '%d' % int(time.time() * 10),
-            # 'nonce': 1515332961,
         })
 
         params_string = self._encode_params_url(params)
@@ -90,7 +89,7 @@ class CTAPI(object):
             'Key': self.api_key,
             'Sign': params_signed,
             'Connection': 'close',
-            'User-Agent': 'python-cointracking-api/%s (https://github.com/tbl42/python-cointracking-api)' % (__version__),
+            'User-Agent': 'python-cointracking-api/%s (https://github.com/tbl42/python-ctapi)' % (__version__),
         }
 
         logger.debug("="*30)
