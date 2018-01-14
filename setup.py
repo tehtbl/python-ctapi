@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='python-ctapi',
-    version='0.1.0-dev',
+    version='0.2.0',
     packages=find_packages('ctapi'),
     install_requires=[
         'requests==2.18.4',
@@ -29,7 +29,7 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Operating System :: OS Independent',
-        'Development Status :: 3 - Alpha',
+        'License :: OSI Approved :: MIT License',
         'Intended Audience :: Developers',
         'Topic :: Office/Business :: Financial',
     ]

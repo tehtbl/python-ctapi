@@ -18,7 +18,7 @@ import requests
 
 __author__ = "tbl42"
 __copyright__ = "tbl42 2017"
-__version__ = '0.1.0-dev'
+__version__ = '0.2.0'
 
 # set logging
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
