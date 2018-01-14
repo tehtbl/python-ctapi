@@ -1,22 +1,27 @@
-# python-ctapi
+python-ctapi
+============
 
 Python interface for [CoinTracking.info API](https://cointracking.info/api/api.php).
 
-I am not associated -- use at your own risk!
+I am not associated to cointracking.info -- use at your own risk!
 
-# Requirements:
+Requirements:
+=============
 
-* requests
-* futures
+-	requests
 
-# Install
+Install
+=======
+
 ```
 python setup.py install
 ```
 
-# How to Use
+How to Use
+==========
 
 This is an example about how you can use the library
+
 ```
 #!/usr/bin/env python2
 
@@ -35,7 +40,7 @@ if trades['success']:
 
 else:
     print "got no orders"
-    
+
 print api.getBalance()
 print api.getHistoricalSummary()
 print api.getHistoricalCurrency()
@@ -43,17 +48,21 @@ print api.getGroupedBalance()
 print api.getGains()
 ```
 
-# Running Tests
+Running Tests
+=============
+
 ```
 venv/bin/python -m unittest -v ctapi.test.ctapi_tests
 ```
+
 **be aware of the API requests limit of 20 req/h**
 
-# Contribute
+Contribute
+==========
+
 Do you have an idea or found a bug in python-ctapi? Please file an issue and make a PR! :)
 
-## Support Me
+Support Me
+----------
+
 If you like the API and wanna support its developer, use the following referral link when registering at cointracking: https://cointracking.info?ref=T161519
-
-
-
