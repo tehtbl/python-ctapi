@@ -1,3 +1,8 @@
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/tbl42/python-ctapi/issues)
+[![version](https://img.shields.io/pypi/v/python-ctapi.svg?colorB=brightgreen)](https://pypi.python.org/pypi/python-ctapi)
+[![versions](https://img.shields.io/pypi/pyversions/python-ctapi.svg)](123)
+[![license](https://img.shields.io/pypi/l/python-ctapi.svg)](https://github.com/tbl42/python-ctapi/blob/master/LICENSE)
+
 # python-ctapi
 Python interface for [CoinTracking.info API](https://cointracking.info/api/api.php).
 
