@@ -10,26 +10,14 @@ try:
 except Exception:
     IS_CI_ENV = True
 
-# def test_basic_response(unit_test, result, method_name):
-#     unit_test.assertTrue(result['success'], "{0:s} failed".format(method_name))
-#     unit_test.assertTrue(result['message'] is not None, "message not present in response")
-#     unit_test.assertTrue(result['result'] is not None, "result not present in response")
-
-
-# {'result': {u'error_msg': u'ERROR: Sign is not correct', u'method': u'getBalance', u'success': 0, u'error': u'SIGN_INCORRECT'}, 'success': True}
-# {'result': {u'error_msg': u'ERROR: API Key not set', u'method': u'getBalance', u'success': 0, u'error': u'KEY_MISSING'}, 'success': True}
-# {'result': {u'error_msg': u'ERROR: Sign is not correct', u'method': u'getBalance', u'success': 0, u'error': u'SIGN_INCORRECT'}, 'success': True}
-
-def test_auth_basic_failures(unit_test, result, test_type):
-    pass
-
-    # unit_test.assertFalse(result['success'], "{0:s} failed".format(test_type))
-    # unit_test.assertTrue('invalid' in str(result['message']).lower(), "{0:s} failed response message".format(test_type))
-    # unit_test.assertIsNone(result['result'], "{0:s} failed response result not None".format(test_type))
-
+def test_basic_response(unit_test, result, method_name):
+    unit_test.assertTrue(result['success'], "%s failed" % method_name)
+    unit_test.assertTrue(result['result'] is not None, "result not present in response")
+    unit_test.assertTrue(isinstance(result['result'], dict), "result is not a dict")
+    # unit_test.assertTrue(result['result']['method'] is method_name, "result method is wrong")
 
 @unittest.skipIf(IS_CI_ENV, 'no account secrets uploaded in CI envieonment, TODO')
-class TestCoinTrackingAPIBasicTests(unittest.TestCase):
+class TestCTAPIBasicTests(unittest.TestCase):
     """
     Integration tests for the CoinTracking API
 
@@ -72,11 +60,29 @@ class TestCoinTrackingAPIBasicTests(unittest.TestCase):
         actual = self.api.getBalance()
         self.assertFalse(actual['success'], 'invalid key, invalid secret')
 
-    # def test_get_balances(self):
-    #     actual = self.bittrex.get_balances()
-    #     test_basic_response(self, actual, "get_balances")
-    #     self.assertTrue(isinstance(actual['result'], list), "result is not a list")
+    def test_getTrades(self):
+        actual = self.api.getTrades()
+        test_basic_response(self, actual, "getTrades")
 
+    def test_getBalance(self):
+        actual = self.api.getBalance()
+        test_basic_response(self, actual, "getBalance")
+
+    def test_getHistoricalSummary(self):
+        actual = self.api.getHistoricalSummary()
+        test_basic_response(self, actual, "getHistoricalSummary")
+
+    def test_getHistoricalCurrency(self):
+        actual = self.api.getHistoricalCurrency()
+        test_basic_response(self, actual, "getHistoricalCurrency")
+
+    def test_getGroupedBalance(self):
+        actual = self.api.getGroupedBalance()
+        test_basic_response(self, actual, "getGroupedBalance")
+
+    def test_getGains(self):
+        actual = self.api.getGains()
+        test_basic_response(self, actual, "getGains")
 
 if __name__ == '__main__':
     unittest.main()

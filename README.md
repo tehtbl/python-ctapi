@@ -47,6 +47,7 @@ print api.getGains()
 ```
 venv/bin/python -m unittest -v ctapi.test.ctapi_tests
 ```
+**be aware of the API requests limit of 20 req/h**
 
 # Contribute
 Do you have an idea or found a bug in python-ctapi? Please file an issue and make a PR! :)
