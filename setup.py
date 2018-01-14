@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 setup(
     name='python-ctapi',
     version='0.2.0',
-    packages=find_packages('ctapi'),
+    packages=['ctapi'],
     install_requires=[
         'requests==2.18.4',
         'future==0.16.0',
