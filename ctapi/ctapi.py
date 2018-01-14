@@ -17,8 +17,8 @@ import hashlib
 import requests
 
 __author__ = "tbl42"
-__copyright__ = "tbl42 2017"
-__version__ = '0.2.0'
+__copyright__ = "(C) 2018 https://github.com/tbl42/"
+__version__ = '0.3.0'
 
 # set logging
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
