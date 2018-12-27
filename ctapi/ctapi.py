@@ -13,6 +13,7 @@ import time
 import hmac
 import logging
 import hashlib
+from collections import OrderedDict
 
 import requests
 
@@ -130,7 +131,7 @@ class CTAPI(object):
                 new_params[k] = (None, str(params[k]))
 
             r = requests.post(URI_API, headers=hdrs, files=new_params, verify=False)
-            ret_json = r.json()
+            ret_json = r.json(object_pairs_hook=OrderedDict)
 
             return {
                 'success': ret_json['success'],
