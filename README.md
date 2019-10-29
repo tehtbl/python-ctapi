@@ -8,6 +8,7 @@ I am not associated to cointracking.info -- use at your own risk!
 
 # Install
 `python setup.py install`
+
 `pip install python-ctapi`
 
 # How to Use
@@ -40,6 +41,7 @@ print api.getGains()
 
 # Running Tests
 **be aware of the API requests limit of 20 req/h**
+
 `venv/bin/python -m unittest -v ctapi.test.ctapi_tests`
 
 # Contribute

@@ -10,11 +10,13 @@ try:
 except Exception:
     IS_CI_ENV = True
 
+
 def test_basic_response(unit_test, result, method_name):
     unit_test.assertTrue(result['success'], "%s failed" % method_name)
     unit_test.assertTrue(result['result'] is not None, "result not present in response")
     unit_test.assertTrue(isinstance(result['result'], dict), "result is not a dict")
     # unit_test.assertTrue(result['result']['method'] is method_name, "result method is wrong")
+
 
 @unittest.skipIf(IS_CI_ENV, 'no account secrets uploaded in CI envieonment, TODO')
 class TestCTAPIBasicTests(unittest.TestCase):
@@ -83,6 +85,7 @@ class TestCTAPIBasicTests(unittest.TestCase):
     def test_getGains(self):
         actual = self.api.getGains()
         test_basic_response(self, actual, "getGains")
+
 
 if __name__ == '__main__':
     unittest.main()

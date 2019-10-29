@@ -16,9 +16,9 @@ import hashlib
 
 import requests
 
-__author__ = "tbl42"
-__copyright__ = "(C) 2018 https://github.com/tbl42/"
-__version__ = '0.3.0'
+__author__ = "tehtbl"
+__copyright__ = "(C) 2018 https://github.com/tehtbl"
+__version__ = '0.3.1'
 
 # set logging
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -30,6 +30,7 @@ logger = logging.getLogger(__name__)
 requests.packages.urllib3.disable_warnings()
 
 URI_API = 'https://cointracking.info/api/v1/'
+
 
 #
 # API object
@@ -46,7 +47,6 @@ class CTAPI(object):
     #
     def __init__(self, api_key=None, api_secret=None, debug=False):
         # if not self.api_key or not self.api_secret:
-
 
         self.api_key = api_key
         self.api_secret = api_secret
@@ -114,15 +114,15 @@ class CTAPI(object):
             'Key': self.api_key,
             'Sign': params_signed,
             'Connection': 'close',
-            'User-Agent': 'python-ctapi/%s (https://github.com/tbl42/python-ctapi)' % (__version__),
+            'User-Agent': 'python-ctapi/%s (https://github.com/tehtbl/python-ctapi)' % (__version__),
         }
 
-        logger.debug("="*30)
+        logger.debug("=" * 30)
         logger.debug(params)
         logger.debug(params_string)
         logger.debug(params_signed)
         logger.debug(hdrs)
-        logger.debug("="*30)
+        logger.debug("=" * 30)
 
         try:
             new_params = {}

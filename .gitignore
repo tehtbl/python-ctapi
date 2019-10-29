@@ -103,3 +103,5 @@ ENV/
 test.py
 .idea/
 secrets.yml
+
+venv3
