@@ -2,19 +2,12 @@
     See https://cointracking.info/api/api.php
 """
 
-try:
-    from urllib import urlencode
-    from urlparse import urljoin
-except ImportError:
-    from urllib.parse import urlencode
-    from urllib.parse import urljoin
-
-import time
+import hashlib
 import hmac
 import logging
-import hashlib
+import time
 
-import requests
+import httpx
 
 __author__ = "tehtbl"
 __copyright__ = "(C) 2018 https://github.com/tehtbl"
@@ -25,9 +18,6 @@ logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(leve
 logging.getLogger('requests.packages.urllib3').setLevel(logging.INFO)
 logging.getLogger('urllib3.connectionpool').setLevel(logging.INFO)
 logger = logging.getLogger(__name__)
-
-# disable unsecure SSL warning
-requests.packages.urllib3.disable_warnings()
 
 URI_API = 'https://cointracking.info/api/v1/'
 
@@ -129,7 +119,7 @@ class CTAPI(object):
             for k in params.keys():
                 new_params[k] = (None, str(params[k]))
 
-            r = requests.post(URI_API, headers=hdrs, files=new_params, verify=False)
+            r = httpx.post(URI_API, headers=hdrs, files=new_params, verify=False)
             ret_json = r.json()
 
             return {

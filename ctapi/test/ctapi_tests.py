@@ -1,11 +1,10 @@
-import json
-import yaml
+import os
 import unittest
 
 from ctapi import CTAPI
 
 try:
-    open("secrets.yml").close()
+    secrets = {"key": os.environ["key"], "secret": os.environ["secret"]}
     IS_CI_ENV = False
 except Exception:
     IS_CI_ENV = True
@@ -34,9 +33,7 @@ class TestCTAPIBasicTests(unittest.TestCase):
     """
 
     def setUp(self):
-        with open("secrets.yml") as f:
-            self.secrets = yaml.load(f)
-            f.close()
+        self.secrets = {"key": os.environ["key"], "secret": os.environ["secret"]}
 
         # self.api = CTAPI(secrets['key'], secrets['secret'], debug=True)
         self.api = CTAPI(self.secrets['key'], self.secrets['secret'])
