@@ -237,3 +237,19 @@ class CTAPI(object):
         params.update(args)
 
         return self._api_query('getGains', params)
+
+   
+    #
+    # getLedger
+    #
+    def getLedger(self, **args):
+        """
+        Used to get Returns your Ledger
+        """
+
+        params = {
+            'show_advanced': '1',
+        }
+        params.update(args)
+
+        return self._api_query('getLedger', params)
