@@ -136,10 +136,10 @@ class CTAPI(object):
                 'success': ret_json['success'],
                 'result': ret_json
             }
-        except:
+        except Exception as e:
             return {
                 'success': False,
-                'message': "error connecting to API"
+                'message': "error connecting to API: %s" % str(e)
             }
 
     ###########################################################################
